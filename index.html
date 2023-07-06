@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div id="map">    </div>
+
+    <script>var map = L.map('map').setView([-6.917724245918398, 106.93097192347649], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+    // Tambahkan penanda mixue
+    var mixueIcon = L.icon({
+    iconUrl:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Lambang_Polri.png",
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    });
+
+    // script.js
+    // Tambahkan marker dan pop-up
+    var mixueLocations = [
+    {
+        name: "Polsek Caringin",
+        location: [-6.872255122809246, 106.86440990111154],
+        address:
+        "Caringin Kulon, Kec. Caringin, Kabupaten Sukabumi, Jawa Barat 43154",
+    },
+    {
+        name: "Polsek Sukabumi",
+        location: [-6.882821545338111, 106.94234416474232],
+        address:
+        "4W7V+C65, Jl. Selabintana, Karawang, Kab. Sukabumi, Kabupaten Sukabumi, Jawa Barat 43151",
+      },
+      {
+        name: "Polsek Cibeureum",
+        location: [-6.953861404383229, 106.94780075007598],
+        address:
+          "2WVX+P8G, Perum Asri, Sindangpalay, Kec. Cibeureum, Kota Sukabumi, Jawa Barat 43162",
+      },
+      {
+        name: "Polsek Baros",
+        location: [-6.96173471235677, 106.93842690022382],
+        address:
+          "Jl. Baros, Baros, Kec. Baros, Kota Sukabumi, Jawa Barat 43161",
+      },
+      {
+        name: "Polsek Gunung Puyuh",
+        location: [-6.911127105503394, 106.91355943564103],
+        address:
+          "Jl. Merbabu No.7, RT.5/RW.4, Karang Tengah, Kec. Gunungpuyuh, Kota Sukabumi, Jawa Barat 43121",
+      },
+      {
+        name: "Polsek Warudoyong",
+        location: [-6.92322635035882, 106.90325975321664],
+        address:
+          "Jl. Raya Cemerlang, Sukakarya, Kec. Warudoyong, Kota Sukabumi, Jawa Barat 43135",
+      },
+      {
+        name: "Polsek Cikole",
+        location: [-6.910004931862007, 106.93324347125522],
+        address:
+          "Jl. Tubagus Abdullah No.2, Selabatu, Kec. Cikole, Kota Sukabumi, Jawa Barat 43114",
+      },
+      {
+        name: "Polsek Citamiang",
+        location: [-6.941646216070278, 106.9281535800754],
+        address:
+          "Jl. Pramuka No.14, Gedongpanjang, Kec. Citamiang, Kota Sukabumi, Jawa Barat 43142",
+      },
+      {
+        name: "Polsek Sukaraja",
+        location: [-6.916959382942169, 106.9639666161096],
+        address:
+          "Jl. Raya Sukaraja No.176, Pasirhalang, Kec. Sukaraja, Kabupaten Sukabumi, Jawa Barat 43192",
+      },
+
+
+      // Tambahkan lokasi Mixue lainnya di sini
+    ];
+
+    /*mixueLocations.forEach(function (mixue) {
+    L.marker(mixue.location, { icon: mixueIcon })
+      .bindPopup(mixue.name)
+      .addTo(map);
+  });*/
+
+    mixueLocations.forEach(function (location) {
+      var marker = L.marker(location.location, { icon: mixueIcon }).addTo(map);
+      marker.bindPopup("<b>" + location.name + "</b><br>" + location.address);
+    });
+  
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
